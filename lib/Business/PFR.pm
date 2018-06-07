@@ -158,9 +158,9 @@ sub _check_is_valid {
 sub _get_check_digit {
     my ($self, $sum) = @_;
 
-    return '00' if $sum == 100;
+    my ($digit) = sprintf("%02d", $sum % 101) =~ /(\d{2})\z/;
 
-    return sprintf("%02d", $sum % 101);
+    return $digit;
 }
 
 1;
